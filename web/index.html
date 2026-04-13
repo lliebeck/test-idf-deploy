@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>__PROJECT_NAME__ Flash Installer</title>
+    <meta
+      name="description"
+      content="Browserbasierter Installer fuer __PROJECT_NAME__ auf __CHIP_FAMILY__ mit esp-web-tools."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"
+    ></script>
+  </head>
+  <body>
+    <main class="layout">
+      <section class="hero">
+        <p class="eyebrow">GitHub Pages Firmware Installer</p>
+        <h1>__PROJECT_NAME__ direkt im Browser aufspielen</h1>
+        <p class="lead">
+          Diese Seite stellt immer den neuesten erfolgreichen Build von <code>main</code> bereit
+          und flasht ihn ueber <code>esp-web-tools</code> direkt auf kompatible Geraete.
+        </p>
+
+        <div class="panel">
+          <esp-web-install-button manifest="__MANIFEST_PATH__"></esp-web-install-button>
+          <p class="hint">
+            Unterstuetztes Ziel: <strong>__CHIP_FAMILY__</strong> (<code>__TARGET__</code>)
+          </p>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Aktueller Build</h2>
+          <dl class="meta-list">
+            <div>
+              <dt>Version</dt>
+              <dd>__VERSION__</dd>
+            </div>
+            <div>
+              <dt>Gebaut</dt>
+              <dd>__BUILD_TIME__</dd>
+            </div>
+            <div>
+              <dt>Commit</dt>
+              <dd><code>__COMMIT__</code></dd>
+            </div>
+          </dl>
+          <p class="link-row">
+            __SOURCE_LINK__
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>So funktioniert es</h2>
+          <ol>
+            <li>ESP32 per USB verbinden.</li>
+            <li>Einen Chromium-basierten Browser verwenden.</li>
+            <li>Auf "Connect" klicken und den seriellen Port waehlen.</li>
+          </ol>
+        </article>
+
+        <article class="card">
+          <h2>Firmware-Dateien</h2>
+          <ul class="downloads">
+            __DOWNLOAD_LINKS__
+          </ul>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

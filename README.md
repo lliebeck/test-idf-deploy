@@ -51,3 +51,34 @@ Please use the following feedback channels:
 * For a feature request or bug report, create a [GitHub issue](https://github.com/espressif/esp-idf/issues)
 
 We will get back to you as soon as possible.
+
+## GitHub Pages Web Flasher
+
+This repository now contains a GitHub Actions workflow that builds the firmware on every push to `main` and publishes a GitHub Pages site with an `esp-web-tools` installer.
+
+### What gets published
+
+The workflow:
+
+* builds the ESP-IDF project
+* reads `build/flasher_args.json` to pick the correct flash offsets automatically
+* creates a `manifest.json` for `esp-web-tools`
+* publishes the newest firmware binaries and a small installer page to GitHub Pages
+
+### Required repository setup
+
+1. Open **Settings > Pages** in the GitHub repository.
+2. Set **Source** to **GitHub Actions**.
+3. Push to `main` or run the workflow manually once via **Actions**.
+
+After the first successful deployment, the web flasher is available at the repository's GitHub Pages URL.
+
+### Local preview of the generated site
+
+If you already built the firmware locally, you can generate the same static files with:
+
+```bash
+python scripts/generate_web_flasher.py --build-dir build --output-dir site
+```
+
+The generated `site/` directory contains the installer page plus the latest binaries and manifest.
