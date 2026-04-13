@@ -17,6 +17,7 @@ concurrency:
 
 env:
   ESP_IDF_VERSION: v5.5.3
+  IDF_TARGET: esp32s3
 
 jobs:
   build:
@@ -35,7 +36,9 @@ jobs:
           version: ${{ env.ESP_IDF_VERSION }}
 
       - name: Build firmware
-        run: idf.py build
+        run: |
+          idf.py set-target $IDF_TARGET
+          idf.py build
 
       - name: Generate GitHub Pages site
         run: python scripts/generate_web_flasher.py --build-dir build --output-dir site
